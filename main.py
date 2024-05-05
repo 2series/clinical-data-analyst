@@ -1,3 +1,4 @@
+import os
 import logging
 
 from flask import Flask, render_template
@@ -27,8 +28,45 @@ def contact():
 
 @app.route("/send-message", methods=['POST'])
 def send_message():
-    # TODO: Implement the logic to handle the message sending or processing
-    return "Message sent successfully!", 200
+    from flask import request
+    import smtplib
+    from email.mime.text import MIMEText
+    from email.mime.multipart import MIMEMultipart
+    name = request.form['name']
+    email = request.form['email']
+    message = request.form['message']
+    # Environment variables for email functionality
+    # These variables are fetched from the environment and not linked directly to HTML
+    sender_email = os.environ.get('SENDER_EMAIL')
+    sender_password = os.environ.get('SENDER_PASSWORD')
+    receiver_email = os.environ.get('RECEIVER_EMAIL')
+    
+    if not sender_email or not sender_password or not receiver_email:
+        logger.error("Email environment variables are not set.")
+        return "Internal server error. Please try again later.", 500
+    
+    msg = MIMEMultipart()
+    msg['From'] = sender_email
+    msg['To'] = receiver_email
+    msg['Subject'] = f"New message from {name} via Contact Form"
+    
+    body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
+    msg.attach(MIMEText(body, 'plain'))
+    
+    try:
+        with smtplib.SMTP('smtp.gmail.com', 587) as server:
+            server.starttls()
+            server.login(sender_email, sender_password)
+            text = msg.as_string()
+            server.sendmail(sender_email, receiver_email, text)
+            logger.info(f"Message sent from {name} ({email}): {message}")
+            return "Message sent successfully!", 200
+    except smtplib.SMTPAuthenticationError:
+        logger.error("Failed to authenticate with the SMTP server. Check the SENDER_EMAIL and SENDER_PASSWORD.")
+        return "Authentication failed. Please check the application settings.", 500
+    except Exception as e:
+        logger.error(f"Failed to send email: {e}")
+        return "Failed to send message. Please try again later.", 500
 
 
 class StandaloneApplication(BaseApplication):
