@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Data Analyst</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto mt-8">
+      <section class="text-gray-600 body-font">
+        <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+          <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Clinical Data Analyst</h1>
+          <p class="mb-8 leading-relaxed">Specializing in clinical data analysis to support healthcare decisions and research. Discover how I can assist you in making data-driven healthcare decisions.</p>
+          <div class="text-center lg:w-2/3 w-full">
+            <a href="#about" class="mr-5 hover:text-gray-900">About</a>
+            <a href="#services" class="mr-5 hover:text-gray-900">Services</a>
+            <a href="#contact" class="mr-5 hover:text-gray-900">Contact</a>
+          </div>
+        </div>
+      </section>
+      <section id="about" class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="text-center mb-20">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">About Me</h1>
+            <p class="text-base leading-relaxed xl:w-2/3 lg:w-3/4 mx-auto">As a clinical data analyst, I specialize in analyzing health data to improve patient outcomes and support medical research. My expertise includes statistical analysis, data visualization, and predictive modeling in healthcare settings.</p>
+          </div>
+        </div>
+      </section>
+      <section id="services" class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="text-center mb-20">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">Services</h1>
+            <p class="text-base leading-relaxed xl:w-2/3 lg:w-3/4 mx-auto">I provide specialized services in clinical data analysis, including patient data analysis, clinical trial data management, and healthcare data visualization to support evidence-based decisions in healthcare.</p>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="text-gray-600 body-font relative">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Me</h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Feel free to reach out for collaborations or just a friendly hello!</p>
+          </div>
+          <form method="POST" action="/send-message" class="lg:w-1/2 md:w-2/3 mx-auto">
+            <div class="flex flex-wrap -m-2">
+              <div class="p-2 w-1/2">
+                <div class="relative">
+                  <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
+                  <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+              </div>
+              <div class="p-2 w-1/2">
+                <div class="relative">
+                  <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+                  <input type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+              </div>
+              <div class="p-2 w-full">
+                <div class="relative">
+                  <label for="message" class="leading-7 text-sm text-gray-600">Message</label>
+                  <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                </div>
+              </div>
+              <div class="p-2 w-full">
+                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Send</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
